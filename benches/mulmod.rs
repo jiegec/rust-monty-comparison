@@ -10,7 +10,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     b = b - BigUint::from(2u32);
     let m = BigUint::from_slice(&rust_monty_comparison::N);
 
-    c.bench_function("bignum", |bench| {
+    c.bench_function("num-bigint", |bench| {
         bench.iter(|| {
             let res = big_uint_mulmod(black_box(&a), black_box(&b), black_box(&m));
             res
@@ -20,7 +20,7 @@ fn criterion_benchmark(c: &mut Criterion) {
     let b_monty = MontyBigNum::from_u32_slice(&b.to_u32_digits());
     let r2_mod = MontyBigNum::from_u32_slice(&R2_MOD);
     let one = MontyBigNum::one();
-    c.bench_function("monty", |bench| {
+    c.bench_function("4x monty", |bench| {
         bench.iter(|| {
             let a = black_box(a_monty) * r2_mod;
             let b = black_box(b_monty) * r2_mod;
@@ -32,7 +32,7 @@ fn criterion_benchmark(c: &mut Criterion) {
 
     let a_monty2 = a_monty * r2_mod;
     let b_monty2 = b_monty * r2_mod;
-    c.bench_function("monty2", |bench| {
+    c.bench_function("2x monty", |bench| {
         bench.iter(|| {
             let res = black_box(a_monty2) * black_box(b_monty2);
             let res2 = res * one;
