@@ -5,7 +5,7 @@ Compare the performance of Montgomery multiplication and mulmod from num-bigint 
 |            | Intel Xeon E5-2699 v4 | Apple M1 |
 | ---------- | --------------------- | -------- |
 | num-bigint | 405 ns                | 460 ns   |
-| monty      | 380 s                 | 264 ns   |
+| monty      | 380 ns                | 264 ns   |
 
 The result is used in the following paper:
 
